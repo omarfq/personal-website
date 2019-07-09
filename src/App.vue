@@ -1,38 +1,36 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+  <v-app dark>
+    <v-toolbar dark>
+      <v-toolbar-title>Example</v-toolbar-title>
     </v-toolbar>
-
     <v-content>
-      <HelloWorld/>
+      <app-circular-menu></app-circular-menu>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+  import CircularMenu from './components/CircularMenu.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data () {
-    return {
-      //
+  export default {
+    name: 'App',
+    components: {
+      appCircularMenu: CircularMenu
+    },
+    data () {
+      return {
+        menuItems: [
+          { icon: 'description', title: 'Resumé', link: '/' },
+          { icon: 'settings_ethernet', title: 'Projects', link: '/' },
+        ]
+      }
     }
   }
-}
 </script>
+
+<style lang="scss">
+  html {
+    font-size: 62.5%;
+    text-transform: uppercase;
+  }
+</style>
