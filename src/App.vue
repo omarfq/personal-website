@@ -1,5 +1,8 @@
 <template>
   <v-app dark>
+    <v-toolbar dark>
+      <v-toolbar-title>Example</v-toolbar-title>
+    </v-toolbar>
     <v-content>
       <app-home></app-home>
     </v-content>
