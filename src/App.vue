@@ -1,21 +1,22 @@
 <template>
   <v-app dark>
-    <v-toolbar dark>
-      <v-toolbar-title>Example</v-toolbar-title>
-    </v-toolbar>
     <v-content>
-      <app-home></app-home>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
+//import Home from "./components/Home.vue";
+import Landing from "./components/Landing.vue";
+import Contact from './components/Contact.vue';
 
 export default {
   name: "App",
   components: {
-    appHome: Home
+    // appHome: Home,
+    appLanding: Landing,
+    appContact: Contact
   },
   data() {}
 };
@@ -24,6 +25,21 @@ export default {
 <style>
 html {
   font-size: 62.5%;
+  color: rgba(3, 169, 244);
 }
+
+.no-blur {
+  filter: blur(0) !important;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.bg-img {
+  background-image: url('./assets/bg-imageBLURRED.jpg');
+  width: 100vw;
+  height: 100vh;
+} 
 
 </style>
