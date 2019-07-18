@@ -1,46 +1,41 @@
 <template>
-    <v-container fill-height text-xs-center>
+    <v-container fluid fill-height text-xs-center>
         <v-layout align-center justify-center>
             <v-flex xs6>
+                <h1 class="display-2 mb-5 font-weight-thin">Shoot me an email</h1>
                 <form>
                     <v-text-field
-                    v-model="name"
-                    v-validate="'required|max:10'"
-                    :counter="10"
-                    :error-messages="errors.collect('name')"
-                    label="Name"
-                    data-vv-name="name"
-                    required
+                        v-model="name"
+                        v-validate="'required|max:10'"
+                        :counter="10"
+                        :error-messages="errors.collect('name')"
+                        label="Name"
+                        data-vv-name="name"
+                        required
                     ></v-text-field>
                     <v-text-field
-                    v-model="email"
-                    v-validate="'required|email'"
-                    :error-messages="errors.collect('email')"
-                    label="E-mail"
-                    data-vv-name="email"
-                    required
+                        v-model="email"
+                        v-validate="'required|email'"
+                        :error-messages="errors.collect('email')"
+                        label="E-mail"
+                        data-vv-name="email"
+                        required
                     ></v-text-field>
-                    <v-select
-                    v-model="select"
-                    v-validate="'required'"
-                    :items="items"
-                    :error-messages="errors.collect('select')"
-                    label="Select"
-                    data-vv-name="select"
-                    required
-                    ></v-select>
-                    <v-checkbox
-                    v-model="checkbox"
-                    v-validate="'required'"
-                    :error-messages="errors.collect('checkbox')"
-                    value="1"
-                    label="Option"
-                    data-vv-name="checkbox"
-                    type="checkbox"
-                    required
-                    ></v-checkbox>
-                    <v-btn @click="submit">submit</v-btn>
-                    <v-btn @click="clear">clear</v-btn>
+                    <v-textarea
+                        v-model="message"
+                        v-validate="'required'"
+                        :error-messages="errors.collect('message')"
+                        label="Your message"
+                        data-vv-name="message"
+                        required
+                    ></v-textarea>
+                    <v-btn @click="submit" class="mt-5" color="#1565C0">submit</v-btn>
+                    <v-btn @click="clear" class="mt-5" color="#1565C0">clear</v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn to="/" class="mt-3" color="#E53935">
+                        <v-icon left>arrow_back</v-icon>
+                        Back to main Page
+                    </v-btn>
                 </form>
             </v-flex>
         </v-layout>
@@ -61,27 +56,18 @@
     data: () => ({
       name: '',
       email: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4'
-      ],
-      checkbox: null,
+      message: '',
       dictionary: {
         attributes: {
           email: 'E-mail Address'
-          // custom attributes
         },
         custom: {
           name: {
-            required: () => 'Name can not be empty',
+            required: () => 'Name cannot be empty',
             max: 'The name field may not be greater than 10 characters'
-            // custom messages
           },
-          select: {
-            required: 'Select field is required'
+          message: {
+              required: () => 'Message cannot be empty'
           }
         }
       }
@@ -98,8 +84,6 @@
       clear () {
         this.name = ''
         this.email = ''
-        this.select = null
-        this.checkbox = null
         this.$validator.reset()
       }
     }
