@@ -2,7 +2,7 @@
     <v-container fluid fill-height text-xs-center>
         <v-layout align-center justify-center>
             <v-flex xs6>
-                <h1 class="display-2 mb-5 font-weight-thin">Shoot me an email</h1>
+                <h1 class="display-2 mb-5 font-weight-thin">Send me an email</h1>
                 <form>
                     <v-text-field
                         v-model="name"
