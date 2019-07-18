@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid fill-height text-xs-center class="bg-img">
+    <v-container fluid fill-height text-xs-center style="background: linear-gradient(158deg, rgba(0,0,121,1) 0%, rgba(0,187,255,1) 100%);">
         <v-layout align-center>
             <v-flex>
                 <v-progress-circular
@@ -58,7 +58,7 @@ export default {
     }
 
     .bg-img {
-        background-image: url('../assets/bg-image-resized.jpg');
+        background-image: url('../assets/bg-imageBLURRED.jpg');
         width: 100vw;
         height: 100vh;
     } 
