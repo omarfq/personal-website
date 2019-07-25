@@ -13,7 +13,7 @@ app.use(cors());
 // Email Sending Setup
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
-        api_key: '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'
+        api_key: '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'
     }
 }));
 
