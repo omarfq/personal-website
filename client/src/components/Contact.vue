@@ -29,7 +29,7 @@
                         data-vv-name="message"
                         required
                     ></v-textarea>
-                    <v-btn @click="submit" class="mt-5" color="#1565C0">submit</v-btn>
+                    <v-btn @click="submit" :loading="loading" class="mt-5" color="#1565C0">submit</v-btn>
                     <v-btn @click="clear" class="mt-5" color="#1565C0">clear</v-btn>
                     <v-spacer></v-spacer>
                     <v-btn to="/" class="mt-3" color="#E53935">
@@ -71,7 +71,8 @@
               required: () => 'Message cannot be empty'
           }
         }
-      }
+      },
+      loading: false
     }),
 
     mounted () {
@@ -80,6 +81,7 @@
 
     methods: {
       submit () {
+        this.loading = true;
         this.$validator.validateAll()
           .then(result => {
             if (!result) {
@@ -95,8 +97,10 @@
               if (response.data.msg === 'success') {
                 alert('Message sent!');
                 this.clear();
+                this.loading = false;
               } else if (response.data.msg === 'fail') {
                 alert('Message failed to send.');
+                this.loading = false;
               }
             });
           })

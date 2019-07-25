@@ -7,6 +7,7 @@ import Landing from './components/Landing.vue';
 import './plugins/vuetify';
 import "./stylus/main.styl";
 
+
 Vue.use(VueRouter);
 
 const routes = [
