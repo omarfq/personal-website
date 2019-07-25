@@ -81,20 +81,25 @@
     methods: {
       submit () {
         this.$validator.validateAll()
-          axios.post('https://immense-ridge-25248.herokuapp.com/', { 
-              name: this.name, 
-              email: this.email, 
-              message: this.message 
-          })
-          .then(response => {
-            console.log(response);
-            if (response.data.msg === 'success') {
-              alert('Message sent!');
-              this.clear();
-            } else if (response.data.msg === 'fail') {
-              alert('Message failed to send.');
+          .then(result => {
+            if (!result) {
+              alert('Oops! Something went wrong.');
+              return;
             }
-          });
+            axios.post('https://immense-ridge-25248.herokuapp.com/', { 
+                name: this.name, 
+                email: this.email, 
+                message: this.message 
+            })
+            .then(response => {
+              if (response.data.msg === 'success') {
+                alert('Message sent!');
+                this.clear();
+              } else if (response.data.msg === 'fail') {
+                alert('Message failed to send.');
+              }
+            });
+          })
       },
       clear () {
         this.name = '';
