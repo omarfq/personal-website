@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
+const config = require('./config');
 
 // Config
 const app =  express();
@@ -13,7 +14,7 @@ app.use(cors());
 // Email Sending Setup
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
-        api_key: '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'
+        api_key: config.SENDGRID_API_KEY
     }
 }));
 
