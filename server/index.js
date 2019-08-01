@@ -18,6 +18,8 @@ const transporter = nodemailer.createTransport(sendgridTransport({
     }
 }));
 
+console.log(config.SENDGRID_API_KEY);
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
