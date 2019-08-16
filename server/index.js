@@ -1,4 +1,5 @@
 // Packages
+const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,11 +15,17 @@ app.use(cors());
 // Email Sending Setup
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
-        api_key: config.SENDGRID_API_KEY
+        api_key: config.SENDGRID_API
     }
 }));
 
-console.log(config.SENDGRID_API_KEY);
+transporter.verify((error, success) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Server is ready to take messages');
+    }
+});
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -48,9 +55,13 @@ app.post('/', (req, res, next) => {
 
     transporter.sendMail(mail, (err, data) => {
         if (err) {
-            res.json({ msg: 'fail' });
+            res.json({
+              msg: 'fail'
+            })
         } else {
-            res.json({ msg: 'success' });
+            res.json({
+              msg: 'success'
+            })
         }
     });
 });

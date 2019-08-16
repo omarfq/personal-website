@@ -83,17 +83,14 @@
       submit () {
         this.loading = true;
         this.$validator.validateAll()
-          .then(result => {
-            if (!result) {
-              alert('Oops! Something went wrong.');
-              return;
-            }
+          .then(() => {
             axios.post('https://immense-ridge-25248.herokuapp.com/', { 
-                name: this.name, 
-                email: this.email, 
-                message: this.message 
+              name: this.name, 
+              email: this.email, 
+              message: this.message 
             })
             .then(response => {
+              console.log(response);
               if (response.data.msg === 'success') {
                 alert('Message sent!');
                 this.clear();
@@ -102,8 +99,10 @@
                 alert('Message failed to send.');
                 this.loading = false;
               }
-            });
+            })
+            .catch(err => console.log(err));
           })
+          .catch(err => console.log(err));
       },
       clear () {
         this.name = '';
