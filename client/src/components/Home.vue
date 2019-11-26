@@ -3,7 +3,7 @@
         <v-layout row wrap justify-center>
             <v-flex xs12>
                 <h2 class="display-3 mb-3 font-weight-regular space"
-                    style="color: #cacaca; letter-spacing: 3px;">Omar Flores</h2>
+                    style="color: #cacaca; letter-spacing: 3px;">Omar Flores Quintana</h2>
             </v-flex>
             <vue-typer 
                 text="< Curiosity-Driven Development />"
